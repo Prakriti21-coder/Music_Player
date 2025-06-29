@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color: aliceblue; font-size: x-large;">Peaceful Mind Relaxing Music</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .animation-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: move 6s infinite;
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(100px, -50px); }
+            50% { transform: translate(-100px, 50px); }
+            75% { transform: translate(50px, 100px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .music-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 1200px;
+            margin-bottom: 200px;
+        }
+
+        .music-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .music-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        audio {
+            display: none;
+        }
+
+    @keyframes fade-in-out {
+        0%, 100% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+    </style>
+</head>
+<body>
+    <h1>Peaceful Mind Relaxing Music</h1>
+
+    <div class="animation-bg">
+        <div class="dot" style="top: 10%; left: 20%;"></div>
+        <div class="dot" style="top: 30%; left: 50%;"></div>
+        <div class="dot" style="top: 70%; left: 80%;"></div>
+        <div class="dot" style="top: 50%; left: 10%;"></div>
+        <div class="dot" style="top: 80%; left: 40%;"></div>
+        <div class="dot" style="top: 20%; left: 70%;"></div>
+    </div>
+
+    <div class="music-container">
+        <div class="music-card">
+            <img src="https://i.pinimg.com/736x/4a/8c/75/4a8c758e93a8df2c974e3601f116c8ec.jpg" alt="Inner Peace">
+            <h3>Inner Peace</h3>
+            <audio id="audio-peace" src="innner_peace.mp3"></audio>
+            <button onclick="playMusic('audio-peace')">Play</button>
+            <button onclick="stopMusic('audio-peace')">Stop</button>
+        </div>
+
+        <div class="music-card">
+            <img src="https://i.pinimg.com/736x/52/8d/31/528d3122aa4022b2699468ecf8347926.jpg" alt="Minimal Piano">
+            <h3>Minimal Piano</h3>
+            <audio id="audio-piano" src="piano.mp3"></audio>
+            <button onclick="playMusic('audio-piano')">Play</button>
+            <button onclick="stopMusic('audio-piano')">Stop</button>
+        </div>
+
+        <div class="music-card">
+            <img src="https://i.pinimg.com/736x/c9/27/3a/c9273a36d97ec66203aca226c305307c.jpg" alt="Desert Wind">
+            <h3>Desert Wind</h3>
+            <audio id="audio-wind" src="soft_wind.mp3"></audio>
+            <button onclick="playMusic('audio-wind')">Play</button>
+            <button onclick="stopMusic('audio-wind')">Stop</button>
+        </div>
+
+        <div class="music-card">
+            <img src="https://i.pinimg.com/736x/34/15/ad/3415ad29c38f0f0beaecb7eb5bea2e09.jpg" alt="Unbreakable Outro">
+            <h3>Unbreakable Outro</h3>
+            <audio id="audio-unbreakable" src="unbreakable.mp3"></audio>
+            <button onclick="playMusic('audio-unbreakable')">Play</button>
+            <button onclick="stopMusic('audio-unbreakable')">Stop</button>
+        </div>
+
+        <div class="music-card">
+            <img src="https://i.pinimg.com/736x/e0/79/47/e07947c8af31d32a993ec7e466609560.jpg" alt="Calm Waves">
+            <h3>Lofi-Tune </h3>
+            <audio id="audio-waves" src="lofi_bg.mp3"></audio>
+            <button onclick="playMusic('audio-waves')">Play</button>
+            <button onclick="stopMusic('audio-waves')">Stop</button>
+        </div>
+
+        <div class="music-card">
+            <img src="https://i.pinimg.com/736x/35/ac/52/35ac5246f3adcbfff0a3259154f7240b.jpg" alt="Gentle Rain">
+            <h3>Lofi-Girl</h3>
+            <audio id="audio-rain" src="lofi_girl.mp3"></audio>
+            <button onclick="playMusic('audio-rain')">Play</button>
+            <button onclick="stopMusic('audio-rain')">Stop</button>
+        </div>
+    </div>
+    <script>
+        function playMusic(id) {
+            const audio = document.getElementById(id);
+            stopAllMusic();
+            audio.play();
+        }
+
+        function stopMusic(id) {
+            const audio = document.getElementById(id);
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        function stopAllMusic() {
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(audio => {
+                audio.pause();
+                audio.currentTime = 0;
+            });
+        }
+    </script>
+</body>
+</html>
